@@ -53,6 +53,7 @@ export class FileUploadComponent {
     removeFile(): void {
         this.file = null;
         this.fileSelected.emit(null);
+        this.imageName = '';
         this.clearInputElement();
     }
 
@@ -60,7 +61,7 @@ export class FileUploadComponent {
         return file.type.startsWith('image/');
     }
 
-    private clearInputElement(): void {
+    clearInputElement(): void {
         this.fileUpload.nativeElement.value = '';
     }
 
