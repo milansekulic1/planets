@@ -95,11 +95,22 @@ export class PlanetDialogComponent implements OnInit {
         };
         appendFormData(this.planetForm.getRawValue());
         if (this.planet) {
-            this.planetService.updatePlanet(formData, this.planet.id).subscribe(response => {
-                this.closeDialog(false, response);
+            this.planetService.updatePlanet(formData, this.planet.id).subscribe({
+                next: response => {
+                    this.closeDialog(false, response);
+                },
+                error: err => {
+                    console.error('Failed to update planet', err);
+                }
             });
         } else {
-            this.planetService.createPlanet(formData).subscribe();
+            this.planetService.createPlanet(formData).subscribe({
+                next: () => {},
+                error: err => {
+                    console.error('Failed to create planet', err);
+                }
+            });
+
         }
     }
 

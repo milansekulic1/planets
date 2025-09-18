@@ -27,9 +27,14 @@ export class PlanetDetailsComponent implements OnInit {
         this.getPlanet(this.planetId);
     }
 
-    getPlanet(id: number) {
-        this.planetService.getPlanetById(id).subscribe((planet: Planet) => {
-            this.planet.set(planet);
+    getPlanet(id: number): void {
+        this.planetService.getPlanetById(id).subscribe({
+            next: (planet: Planet) => {
+                this.planet.set(planet);
+            },
+            error: err => {
+                console.error('Failed to load planet', err);
+            }
         });
     }
 
@@ -56,8 +61,13 @@ export class PlanetDetailsComponent implements OnInit {
         dialogRef.updateSize('400px');
         dialogRef.afterClosed().subscribe((result) => {
             if (result?.flag) {
-                this.planetService.deletePlanet(this.planetId).subscribe(() => {
-                    this.router.navigate(['/dashboard']);
+                this.planetService.deletePlanet(this.planetId).subscribe({
+                    next: () => {
+                        this.router.navigate(['/dashboard']);
+                    },
+                    error: (err) => {
+                        console.error('Error deleting planet:', err);
+                    }
                 });
             }
         });
