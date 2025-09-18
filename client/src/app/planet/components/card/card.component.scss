@@ -1,0 +1,51 @@
+$white: #FFFFFF;
+
+.card {
+    background-color: $white;
+    border-color: $white;
+    border-radius: 8px;
+    padding: 30px 20px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.planet-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.product-details-value {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    height: 20px;
+    color: #242626;
+}
+
+.product-details-field {
+    font-size: 12px;
+    line-height: 20px;
+    color: #595F60;
+}
+
+.planet-description {
+    text-overflow: ellipsis;
+    height: 80px;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.planet-color-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #DEDFDF;
+}

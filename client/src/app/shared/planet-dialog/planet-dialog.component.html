@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>{{ planet ? 'Edit' : 'New' }} Planet</h2>
+<mat-dialog-content>
+    <div class="file-upload-container">
+        <div>Photo</div>
+        <app-file-upload [imageDetails]="imageDetails" (fileSelected)="onFileReceived($event)"/>
+    </div>
+    <form [formGroup]="planetForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="planetName">
+            @if (planetForm.get('planetName')?.errors && planetForm.get('planetName')?.touched) {
+                <div class="error">
+                    Planet name is required.
+                </div>
+            }
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="radiusInKm">Radius in km</label>
+                    <input type="number" class="form-control" id="radiusInKm" formControlName="planetRadiusKM">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="color">Color</label>
+                    <input type="text" class="form-control" id="color" formControlName="planetColor">
+                </div>
+            </div>
+        </div>
+        <div class="row" formGroupName="distInMillionsKM">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="distFromSun">Dist. from Sun</label>
+                    <input type="number" class="form-control" id="distFromSun" formControlName="fromSun">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="distFromEarth">Dist from Earth</label>
+                    <input type="number" class="form-control" id="distFromEarth" formControlName="fromEarth">
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-center gap-20">
+    <button class="btn btn-primary" (click)="openConfirmationDialog()">{{ planet ? 'Confirm' : 'Create' }}</button>
+    <button class="btn btn-white" (click)="closeDialog( true)">Cancel</button>
+</mat-dialog-actions>

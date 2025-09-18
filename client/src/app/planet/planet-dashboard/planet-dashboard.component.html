@@ -1,0 +1,35 @@
+<div class="container-fluid header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h2>Planets</h2>
+        </div>
+        <div class="d-flex gap-20">
+            <mat-button-toggle-group (change)="changeView($event)" name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle checked [value]="ViewMode.List">
+                    <mat-icon aria-hidden="false" aria-label="Table" fontIcon="grid_view"></mat-icon>
+                </mat-button-toggle>
+                <div class="separator"></div>
+                <mat-button-toggle [value]="ViewMode.Tile">
+                    <mat-icon aria-hidden="false" aria-label="Grid" fontIcon="view_list"></mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <form class="d-flex">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+                       (keydown)="searchPlanet($event)">
+            </form>
+
+            <button type="button" class="btn btn-purple" (click)="openCreateDialog()">New planet</button>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    @if (isTableView === ViewMode.List) {
+        <app-planet-table-view [planets]="filteredPlanets"
+                               (planetId)="openSinglePlanet($event)"></app-planet-table-view>
+    } @else {
+        <app-planet-grid-view [planets]="filteredPlanets" (planetId)="openSinglePlanet($event)"></app-planet-grid-view>
+    }
+</div>
+

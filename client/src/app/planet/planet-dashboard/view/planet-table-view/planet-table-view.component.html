@@ -1,0 +1,62 @@
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+       class="mat-elevation-z8">
+
+    <ng-container matColumnDef="planetName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by planet name">
+            Name
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="planet-cell">
+                @if (element.imageUrl) {
+                    <img [src]="element.imageUrl" alt="{{ element?.planetName }}" class="planet-image"/>
+                } @else {
+                    <div class="planet-color-box" [ngStyle]="{'background-color': element?.planetColor}"></div>
+                }
+                <div class="planet-text">
+                    <div class="default-table-text">{{ element?.planetName }}</div>
+                    <div class="planet-description">{{ element?.description }}</div>
+                </div>
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="planetColor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by color">
+            Color
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="default-table-text">{{ element?.planetColor }}</div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="planetRadiusKM">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Radius in km">
+            Radius in km
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="default-table-text"> {{ element?.planetRadiusKM | number:'1.0-2' }}</div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fromSun">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Dist. from Sun">
+            Dist. from Sun
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="default-table-text"> {{ element?.distInMillionsKM?.fromSun | number:'1.0-2'}}</div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fromEarth">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Dist. from Earth">
+            Dist. from Earth
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="default-table-text"> {{ element?.distInMillionsKM?.fromEarth | number:'1.0-2' }}</div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="planetToShow(row.id)"
+        class="clickable-row"></tr>
+</table>

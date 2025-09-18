@@ -1,0 +1,13 @@
+.input_fileupload--hidden {
+    display: none;
+}
+
+.file-upload-body {
+    display: flex;
+
+    .file-name {
+        display: flex;
+        align-items: center;
+        margin: 0 8px;
+    }
+}

@@ -1,0 +1,28 @@
+<div class="file-upload-body">
+    <div class="file-name">
+        @if (file || imageName) {
+            <button
+                mat-icon-button
+                color="warn"
+                (click)="removeFile()"
+                aria-label="Remove file"
+            >
+                <mat-icon aria-hidden="false" aria-label="Delete" fontIcon="delete"></mat-icon>
+            </button>
+        }
+        <div>{{ file?.name || imageName }}</div>
+    </div>
+
+    <button class="btn btn-gray" (click)="onClick()">
+        Browse...
+    </button>
+
+    <input
+        #fileUpload
+        type="file"
+        class="input_fileupload--hidden"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+    />
+</div>
+

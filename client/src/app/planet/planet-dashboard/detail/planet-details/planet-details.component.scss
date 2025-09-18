@@ -1,0 +1,44 @@
+.card-body {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.planet-image {
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.planet-color-box {
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    border: 1px solid #DEDFDF;
+}
+
+.product-details-value {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    height: 28px;
+    color: #242626;
+}
+
+.product-details-field {
+    font-size: 12px;
+    line-height: 20px;
+    color: #595F60;
+}
+
+.card-box-height {
+    height: 100px;
+}
+
+.planet-image-box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: -webkit-fill-available;
+}

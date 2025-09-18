@@ -1,0 +1,47 @@
+:host {
+    .clickable-row {
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+    }
+
+    .planet-cell {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .planet-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .planet-text {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        gap: 4px;
+    }
+
+    .planet-description {
+        font-size: 12px;
+        color: #7A7F80;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+    }
+
+    .planet-color-box {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px solid #DEDFDF;
+    }
+}

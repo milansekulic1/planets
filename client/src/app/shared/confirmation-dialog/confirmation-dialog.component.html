@@ -1,0 +1,12 @@
+<mat-dialog-content class="d-flex flex-column align-items-center justify-content-center gap-10">
+    <img src="exclamation-mark.svg" alt="Exclamation mark">
+    <div class="confirmation-title">Confirm {{ confirmationData.action }}</div>
+    <p class="confirmation-description">Are you sure you want to {{ confirmationData.mode }}
+        <strong> {{ confirmationData.planetName }}</strong>?</p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="justify-content-center gap-20">
+    <button class="btn btn-primary" (click)="shouldSubmit(true)">Confirm</button>
+    <button class="btn btn-white" (click)="shouldSubmit(false)">Cancel</button>
+</mat-dialog-actions>
+

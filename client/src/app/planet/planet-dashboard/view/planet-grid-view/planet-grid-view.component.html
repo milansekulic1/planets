@@ -1,0 +1,5 @@
+<div class="row gap-y-20">
+    <div *ngFor="let planet of planets" class="col-md-4" (click)="planetToShow(planet.id)">
+        <app-card [planet]="planet"></app-card>
+    </div>
+</div>
